@@ -534,6 +534,9 @@
     <service id="AppBundle\Form\ReservationType" class="AppBundle\Form\ReservationType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="AppBundle\Form\ReviewType" class="AppBundle\Form\ReviewType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="AppBundle\Form\SiteType" class="AppBundle\Form\SiteType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -556,7 +559,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.himdpis"/>
+      <argument type="service" id="service_locator.atw6jcs"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -791,6 +794,7 @@
         <argument>AppBundle\Form\FlightType</argument>
         <argument>AppBundle\Form\PlaneModelType</argument>
         <argument>AppBundle\Form\ReservationType</argument>
+        <argument>AppBundle\Form\ReviewType</argument>
         <argument>AppBundle\Form\SiteType</argument>
         <argument>AppBundle\Form\UserType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1004,7 +1008,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.hoacayg"/>
+      <argument type="service" id="service_locator.obcao5s"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -3617,6 +3621,8 @@
     <service id="abstract.instanceof.AppBundle\Form\PlaneModelType" class="AppBundle\Form\PlaneModelType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\ReservationType" class="AppBundle\Form\ReservationType" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Form\ReservationType" class="AppBundle\Form\ReservationType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\ReviewType" class="AppBundle\Form\ReviewType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Form\ReviewType" class="AppBundle\Form\ReviewType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\SiteType" class="AppBundle\Form\SiteType" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Form\SiteType" class="AppBundle\Form\SiteType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\UserType" class="AppBundle\Form\UserType" public="false" autowire="true" abstract="true"/>
@@ -3637,6 +3643,10 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
+    <service id="service_locator.xnyam6e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
     <service id="service_locator.gynvphf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
@@ -3645,7 +3655,7 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="service_locator.himdpis" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.atw6jcs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
@@ -3755,12 +3765,13 @@
         <argument key="inline" type="service" id="fragment.renderer.inline"/>
       </argument>
     </service>
-    <service id="service_locator.hoacayg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.obcao5s" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="AppBundle\Form\FlightType" type="service" id="AppBundle\Form\FlightType"/>
         <argument key="AppBundle\Form\PlaneModelType" type="service" id="AppBundle\Form\PlaneModelType"/>
         <argument key="AppBundle\Form\ReservationType" type="service" id="AppBundle\Form\ReservationType"/>
+        <argument key="AppBundle\Form\ReviewType" type="service" id="AppBundle\Form\ReviewType"/>
         <argument key="AppBundle\Form\SiteType" type="service" id="AppBundle\Form\SiteType"/>
         <argument key="AppBundle\Form\UserType" type="service" id="AppBundle\Form\UserType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>

@@ -113,6 +113,8 @@ class __TwigTemplate_d577369ac3c73c9da584615f94fc93c8e5e35b4d222da50d63c2e140a74
         // line 36
         echo "        </tbody>
     </table>
+    <a href=\"/\">Go Home</a>
+
 
 ";
         
@@ -185,6 +187,8 @@ class __TwigTemplate_d577369ac3c73c9da584615f94fc93c8e5e35b4d222da50d63c2e140a74
         {% endfor %}
         </tbody>
     </table>
+    <a href=\"/\">Go Home</a>
+
 
 {% endblock %}
 ", "site/index.html.twig", "/home/wilder/WCS/Quête/FlyAround/app/Resources/views/site/index.html.twig");

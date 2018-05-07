@@ -46,10 +46,35 @@ class __TwigTemplate_9af109fa847dc192780963bd323ddcf7ada6b53ab9e432e90bca95b8de7
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h1>Review creation</h1>
+        echo "
+    <h1>Review creation</h1>
+
+    ";
+        // line 7
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_start');
+        echo "
+        ";
+        // line 8
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(($context["form"] ?? $this->getContext($context, "form")), 'widget');
+        echo "
+        <input type=\"submit\" value=\"Create\"/>
+    ";
+        // line 10
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_end');
+        echo "
+
+    <ul>
+        <li>
+            <a href=\"";
+        // line 14
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("review_index");
+        echo "\">Back to the list</a>
+        </li>
+    </ul>
+
 
     <a href=\"";
-        // line 6
+        // line 19
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("review_index");
         echo "\">Back to the list</a>
 
@@ -75,7 +100,7 @@ class __TwigTemplate_9af109fa847dc192780963bd323ddcf7ada6b53ab9e432e90bca95b8de7
 
     public function getDebugInfo()
     {
-        return array (  53 => 6,  49 => 4,  40 => 3,  11 => 1,);
+        return array (  78 => 19,  70 => 14,  63 => 10,  58 => 8,  54 => 7,  49 => 4,  40 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -91,7 +116,20 @@ class __TwigTemplate_9af109fa847dc192780963bd323ddcf7ada6b53ab9e432e90bca95b8de7
         return new Twig_Source("{% extends 'base.html.twig' %}
 
 {% block body %}
+
     <h1>Review creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type=\"submit\" value=\"Create\"/>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href=\"{{ path('review_index') }}\">Back to the list</a>
+        </li>
+    </ul>
+
 
     <a href=\"{{ path('review_index') }}\">Back to the list</a>
 

@@ -141,6 +141,8 @@ class __TwigTemplate_dd310321125d60f2fca35fb8a5dc05943dab5cc8e4060a3769e01e0f578
         echo "\">Create a new flight</a>
         </li>
     </ul>
+    <a href=\"/\">Go Home</a>
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -223,6 +225,8 @@ class __TwigTemplate_dd310321125d60f2fca35fb8a5dc05943dab5cc8e4060a3769e01e0f578
             <a href=\"{{ path('flight_new') }}\">Create a new flight</a>
         </li>
     </ul>
+    <a href=\"/\">Go Home</a>
+
 {% endblock %}
 ", "flight/index.html.twig", "/home/wilder/WCS/Quête/FlyAround/app/Resources/views/flight/index.html.twig");
     }
