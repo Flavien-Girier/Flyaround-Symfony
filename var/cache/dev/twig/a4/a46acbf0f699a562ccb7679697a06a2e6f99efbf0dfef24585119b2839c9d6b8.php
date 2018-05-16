@@ -52,6 +52,8 @@ class __TwigTemplate_20e0610c2f449405d6c2ac07357585c42706deb85ca7c032cb320a4d2f1
         // line 12
         echo "    </body>
 </html>
+
+
 ";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -142,7 +144,7 @@ class __TwigTemplate_20e0610c2f449405d6c2ac07357585c42706deb85ca7c032cb320a4d2f1
 
     public function getDebugInfo()
     {
-        return array (  117 => 11,  100 => 10,  83 => 6,  65 => 5,  53 => 12,  50 => 11,  48 => 10,  41 => 7,  39 => 6,  35 => 5,  29 => 1,);
+        return array (  119 => 11,  102 => 10,  85 => 6,  67 => 5,  53 => 12,  50 => 11,  48 => 10,  41 => 7,  39 => 6,  35 => 5,  29 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -168,6 +170,8 @@ class __TwigTemplate_20e0610c2f449405d6c2ac07357585c42706deb85ca7c032cb320a4d2f1
         {% block javascripts %}{% endblock %}
     </body>
 </html>
+
+
 ", "base.html.twig", "/home/wilder/WCS/Quête/FlyAround/app/Resources/views/base.html.twig");
     }
 }
