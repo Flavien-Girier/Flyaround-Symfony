@@ -111,6 +111,7 @@
     <parameter key="mailer_password">flyaround</parameter>
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="locale">en</parameter>
+    <parameter key="unit">km</parameter>
     <parameter key="fragment.renderer.hinclude.global_template"></parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">ThisTokenIsNotSoSecretChangeIt</parameter>
@@ -613,6 +614,9 @@
     <service id="AppBundle\Form\UserType" class="AppBundle\Form\UserType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="AppBundle\Service\FlightInfo" class="AppBundle\Service\FlightInfo" public="false" autowire="true" autoconfigure="true">
+      <argument>km</argument>
+    </service>
     <service id="app.form.registration" class="AppBundle\Form\RegistrationType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type" alias="app_user_registration"/>
       <tag name="form.type"/>
@@ -633,7 +637,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.atw6jcs"/>
+      <argument type="service" id="service_locator.szgxe_k"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -3028,6 +3032,10 @@
       <call method="addRuntimeLoader">
         <argument type="service" id="twig.runtime_loader"/>
       </call>
+      <call method="addGlobal">
+        <argument>unit</argument>
+        <argument>km</argument>
+      </call>
       <configurator service="twig.configurator.environment" method="configure"/>
     </service>
     <service id="twig.app_variable" class="Symfony\Bridge\Twig\AppVariable" public="false">
@@ -4292,6 +4300,12 @@
     <service id="abstract.instanceof.AppBundle\Form\UserType" class="AppBundle\Form\UserType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.app.form.registration" class="AppBundle\Form\RegistrationType" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.app.form.registration" class="AppBundle\Form\RegistrationType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="service_locator.w1wq1dd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="flightInfo" type="service" id="AppBundle\Service\FlightInfo" on-invalid="ignore"/>
+      </argument>
+    </service>
     <service id="service_locator.yep05aa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
@@ -4320,9 +4334,12 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="service_locator.atw6jcs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.szgxe_k" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="AppBundle\Controller\FlightController:showAction" type="service" id="service_locator.w1wq1dd"/>
+        <argument key="AppBundle\Controller\FlightController::showAction" type="service" id="service_locator.w1wq1dd"/>
+      </argument>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id="service_locator.r4cvhz_"/>
