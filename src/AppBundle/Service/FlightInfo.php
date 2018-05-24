@@ -67,7 +67,7 @@ class FlightInfo
         $array = explode('.', $timeTravel);
 
         $timeTravelHours = $array[0];
-        $timeTravelMinutes = $array[1]*60;
+        $timeTravelMinutes = $array[1]*0.6;
 
         return $timeTravelHours.' heures et '.substr($timeTravelMinutes, 0, 2).' minutes';
     }

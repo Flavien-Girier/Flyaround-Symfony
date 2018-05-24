@@ -322,3 +322,9 @@ aa17c2,127.0.0.1,GET,http://localhost:8000/flight/1,1527154018,,200
 988b61,127.0.0.1,GET,http://localhost:8000/flight/1,1527154118,,200
 e41644,127.0.0.1,GET,http://localhost:8000/flight/1,1527154144,,200
 2aa560,127.0.0.1,GET,http://localhost:8000/,1527154160,,200
+c025b7,127.0.0.1,GET,http://localhost:8000/flight/,1527154374,,200
+a49206,127.0.0.1,GET,http://localhost:8000/flight/1,1527154376,,200
+47f3ca,127.0.0.1,GET,http://localhost:8000/,1527155294,,200
+3fb92d,127.0.0.1,GET,http://localhost:8000/flight/,1527155296,,200
+bacf8e,127.0.0.1,GET,http://localhost:8000/flight/1/edit,1527155297,,200
+f941f9,127.0.0.1,GET,http://localhost:8000/flight/1,1527155299,,200
