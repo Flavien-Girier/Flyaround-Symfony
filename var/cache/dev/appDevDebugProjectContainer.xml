@@ -106,9 +106,11 @@
     <parameter key="database_user">root</parameter>
     <parameter key="database_password">Accordeon1</parameter>
     <parameter key="mailer_transport">smtp</parameter>
-    <parameter key="mailer_host">127.0.0.1</parameter>
-    <parameter key="mailer_user">flaviengirier2@hotmail.com</parameter>
-    <parameter key="mailer_password">flyaround</parameter>
+    <parameter key="mailer_host">smtp.gmail.com</parameter>
+    <parameter key="mailer_port">587</parameter>
+    <parameter key="mailer_user">wcs.proove@gmail.com</parameter>
+    <parameter key="mailer_password">jecode4proove</parameter>
+    <parameter key="mailer_encryption">tls</parameter>
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="unit">km</parameter>
@@ -210,11 +212,11 @@
     <parameter key="swiftmailer.email_sender.listener.class">Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener</parameter>
     <parameter key="swiftmailer.data_collector.class">Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector</parameter>
     <parameter key="swiftmailer.mailer.default.transport.name">smtp</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.port">25</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.host">127.0.0.1</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.username">flaviengirier2@hotmail.com</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.password">flyaround</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">tls</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.port">587</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp.gmail.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.username">wcs.proove@gmail.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.password">jecode4proove</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
@@ -356,7 +358,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.from_email" type="collection">
-      <parameter key="flaviengirier2@hotmail.com">flaviengirier2@hotmail.com</parameter>
+      <parameter key="wcs.proove@gmail.com">wcs.proove@gmail.com</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
     <parameter key="fos_user.registration.form.type">AppBundle\Form\RegistrationType</parameter>
@@ -372,7 +374,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.resetting.email.from_email" type="collection">
-      <parameter key="flaviengirier2@hotmail.com">flaviengirier2@hotmail.com</parameter>
+      <parameter key="wcs.proove@gmail.com">wcs.proove@gmail.com</parameter>
     </parameter>
     <parameter key="fos_user.resetting.retry_ttl">7200</parameter>
     <parameter key="fos_user.resetting.token_ttl">86400</parameter>
@@ -617,6 +619,10 @@
     <service id="AppBundle\Service\FlightInfo" class="AppBundle\Service\FlightInfo" public="false" autowire="true" autoconfigure="true">
       <argument>km</argument>
     </service>
+    <service id="AppBundle\Service\Mailer" class="AppBundle\Service\Mailer" public="false" autowire="true" autoconfigure="true">
+      <argument type="service" id="swiftmailer.mailer.default"/>
+      <argument type="service" id="twig"/>
+    </service>
     <service id="app.form.registration" class="AppBundle\Form\RegistrationType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type" alias="app_user_registration"/>
       <tag name="form.type"/>
@@ -637,7 +643,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.szgxe_k"/>
+      <argument type="service" id="service_locator.inmpoig"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -3382,10 +3388,10 @@
         <argument type="service" id="3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~j4htsom"/>
       </argument>
       <call method="setUsername">
-        <argument>flaviengirier2@hotmail.com</argument>
+        <argument>wcs.proove@gmail.com</argument>
       </call>
       <call method="setPassword">
-        <argument>flyaround</argument>
+        <argument>jecode4proove</argument>
       </call>
       <call method="setAuthMode">
         <argument>null</argument>
@@ -3405,13 +3411,13 @@
       </argument>
       <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
       <call method="setHost">
-        <argument>127.0.0.1</argument>
+        <argument>smtp.gmail.com</argument>
       </call>
       <call method="setPort">
-        <argument>25</argument>
+        <argument>587</argument>
       </call>
       <call method="setEncryption">
-        <argument>null</argument>
+        <argument>tls</argument>
       </call>
       <call method="setTimeout">
         <argument>30</argument>
@@ -4318,6 +4324,12 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
+    <service id="service_locator.t10wrab" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="mailer" type="service" id="AppBundle\Service\Mailer" on-invalid="ignore"/>
+      </argument>
+    </service>
     <service id="service_locator.6pm8gic" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
@@ -4334,11 +4346,13 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="service_locator.szgxe_k" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.inmpoig" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="AppBundle\Controller\FlightController:showAction" type="service" id="service_locator.w1wq1dd"/>
+        <argument key="AppBundle\Controller\ReservationController:newAction" type="service" id="service_locator.t10wrab"/>
         <argument key="AppBundle\Controller\FlightController::showAction" type="service" id="service_locator.w1wq1dd"/>
+        <argument key="AppBundle\Controller\ReservationController::newAction" type="service" id="service_locator.t10wrab"/>
       </argument>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">

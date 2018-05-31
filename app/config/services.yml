@@ -39,3 +39,7 @@ services:
       arguments:
          $unit:       '%unit%'
 
+    AppBundle\Service\Mailer:
+
+
+

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Reservation;
+use AppBundle\Service\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -37,7 +38,7 @@ class ReservationController extends Controller
      * @Route("/new", name="reservation_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Mailer $mailer)
     {
         $reservation = new Reservation();
         $form = $this->createForm('AppBundle\Form\ReservationType', $reservation);
@@ -48,16 +49,33 @@ class ReservationController extends Controller
             $em->persist($reservation);
             $em->flush();
 
+            // Pilot mail $from, $to, $subject, $body, $name
+            $mailer->sendMail(
+                'blabla@blabla.com',
+                $reservation->getFlight()->getPilot()->getEmail(),
+                'Notification d\'une réservation',
+                $reservation->getFlight()->getPilot()->getUsername(),
+                $reservation->getFlight()
+            );
+
+            // Passenger mail
+            $mailer->sendMail(
+                'blabla@blabla.com',
+                $this->getUser()->getEmail(),
+                'Confirmation d\'une réservation',
+                $this->getUser()->getUsername(),
+                $reservation->getFlight()
+            );
+
             return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
         }
-
         return $this->render('reservation/new.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
         ));
     }
 
-    /**
+        /**
      * Finds and displays a reservation entity.
      *
      * @Route("/{id}", name="reservation_show")
