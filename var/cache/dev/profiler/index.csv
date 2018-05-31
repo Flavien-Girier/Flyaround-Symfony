@@ -848,3 +848,10 @@ e53360,127.0.0.1,POST,http://localhost:8000/reservation/new,1527767111,,302
 2a4c57,127.0.0.1,GET,http://localhost:8000/reservation/60/edit,1527767123,,200
 766f4f,127.0.0.1,DELETE,http://localhost:8000/reservation/60,1527767124,,302
 048568,127.0.0.1,GET,http://localhost:8000/reservation/,1527767124,,200
+abb86c,127.0.0.1,GET,http://localhost:8001/reservation/,1527777741,,302
+b5fb14,127.0.0.1,GET,http://localhost:8001/login,1527777741,,200
+1b4a54,127.0.0.1,POST,http://localhost:8001/login_check,1527777746,,302
+423d65,127.0.0.1,GET,http://localhost:8001/reservation/,1527777746,,200
+e19c1b,127.0.0.1,GET,http://localhost:8001/reservation/new,1527777748,,200
+fa60eb,127.0.0.1,POST,http://localhost:8001/reservation/new,1527777750,,302
+a2e0a1,127.0.0.1,GET,http://localhost:8001/reservation/65,1527777752,,200
