@@ -1,15 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <nav>
-            <ul class="nav">
-                <a class="nav-item" href="{{ path('flight_index') }}">Voir les vols</a>
-                <a class="nav-item" href="{{ path('reservation_index') }}">Voir les reservations</a>
-                <a class="nav-item" href="{{ path('site_index') }}">Voir les terrains</a>
-                <a class="nav-item" href="{{ path('review_index') }}">Voir tous les avis utilisateurs</a>
-                <a class="nav-item" href="{{ path('planemodel_index') }}">Voir les avions</a>
+    {% if  app.user %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">FlyAround Airlines</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('flight_index') }}">Les vols</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('reservation_index') }}">Les Réservations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('site_index') }}">Les Aéroports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('review_index') }}">Avis Utilisateurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('planemodel_index') }}">Modèle d'avions </a>
+                </li>
             </ul>
+            {% endif %}
+            {% if  app.user %}
+                <div class="nav-item login">
+                    <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Casse toi !</a>
+                </div>
+            {% else %}
+                <div class="nav-item login">
+                    <a class="nav-link" href="{{ path('fos_user_security_login') }}">Connecte toi !</a>
+                </div>
+            {% endif %}
+        </div>
     </nav>
+
+    {% if  app.user %}
+        <h1 class="text-center mt-5">Glad You Come On Board !</h1>
+    {% else %}
+        <h1 class="text-center mt-5">Be Ready To Fly Around !</h1>
+    {% endif %}
+
+
 
 {% endblock %}
 

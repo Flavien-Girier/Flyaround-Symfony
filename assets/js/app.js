@@ -5,3 +5,6 @@ $(document).ready(function () {
 });
 
 console.log('Bienvenue sur WebPack!')
+
+
+import 'bootstrap';
